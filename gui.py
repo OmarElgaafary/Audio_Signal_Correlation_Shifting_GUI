@@ -1,28 +1,53 @@
-from tkinter import *
-import main
+from tkinter import * 
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, 
+NavigationToolbar2Tk)
+import numpy as np
 
-# The main tkinter window
-window = Tk()
 
-# setting the title and 
-window.title('Plotting in Tkinter')
+class SignalCorrelationApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title = "Correlation Visualization"
+        self.root.geometry = "1000x800"
+        self.fig = Figure(figsize=(5,5))
+        self.ploty = self.fig.add_subplot(111)
+        self.canvas = FigureCanvasTkAgg(self.fig, master=root)
 
-def init():
-    main.allPlots()
+        self.canvas.get_tk_widget().pack(expand=True ,anchor=CENTER)
 
-# setting the dimensions of 
-# the main window
-window.geometry("500x500")
+        self.toolbar = NavigationToolbar2Tk(self.canvas, self.root)
+        self.canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
-# button that would displays the plot
-plot_button = Button(master = window,
-                     height = 2,
-                     width = 10,
-                    text = "Plot",
-                    command=init)
-# place the button
-# into the window
-plot_button.pack()
+        self.input = Entry(fg="black", bg="white", width=100)
 
-# run the gui
-window.mainloop()
+        self.btn = Button(text="Click Here",
+                    fg="white",
+                    bg="grey",
+                    command=self.rectShift)
+
+        self.input.pack()
+        self.btn.pack()
+
+    def rect(self, t):
+       return abs(t) < 0.5
+
+    def rectShift(self):
+        rShift = self.input.get()
+        self.ploty.clear()
+        if isinstance(rShift, (int, float)):
+            input.delete(0, END)
+            print("Error: Input value must be a number.")
+            return 
+
+        t = np.arange(-5, 5, 0.1)
+        y = self.rect(t + float(rShift))
+        self.ploty.plot(t, y)
+        self.canvas.draw()
+        self.toolbar.update()
+
+if __name__ == "__main__":
+    root = Tk()
+    SignalCorrelationApp(root)
+    root.mainloop()

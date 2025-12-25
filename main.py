@@ -102,3 +102,6 @@ plt.plot(t, secondCorreLation)
 
 plt.show()
 
+def correlateUserInputAndCompare():
+    
+
