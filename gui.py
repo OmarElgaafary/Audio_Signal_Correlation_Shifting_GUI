@@ -20,9 +20,9 @@ class SignalCorrelationApp:
         self.toolbar = NavigationToolbar2Tk(self.canvas, self.root)
         self.canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
+        self.label = Label(text="Enter shift value to be correlated with the original audio file.", width=100, fg="black", bg="white").pack(expand=True, anchor=CENTER)
         self.input = Entry(fg="black", bg="white", width=100)
-
-        self.btn = Button(text="Click Here",
+        self.btn = Button(text="Correlate",
                     fg="white",
                     bg="grey",
                     command=self.rectShift)
