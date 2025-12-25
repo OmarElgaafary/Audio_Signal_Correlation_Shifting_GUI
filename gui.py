@@ -4,6 +4,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, 
 NavigationToolbar2Tk)
 import numpy as np
+import main as m
 
 
 class SignalCorrelationApp:
@@ -14,7 +15,6 @@ class SignalCorrelationApp:
         self.fig = Figure(figsize=(5,5))
         self.ploty = self.fig.add_subplot(111)
         self.canvas = FigureCanvasTkAgg(self.fig, master=root)
-
         self.canvas.get_tk_widget().pack(expand=True ,anchor=CENTER)
 
         self.toolbar = NavigationToolbar2Tk(self.canvas, self.root)
@@ -25,7 +25,7 @@ class SignalCorrelationApp:
         self.btn = Button(text="Correlate",
                     fg="white",
                     bg="grey",
-                    command=self.rectShift)
+                    command=self.correlateShift)
 
         self.input.pack()
         self.btn.pack()
@@ -41,9 +41,18 @@ class SignalCorrelationApp:
             print("Error: Input value must be a number.")
             return 
 
-        t = np.arange(-5, 5, 0.1)
-        y = self.rect(t + float(rShift))
-        self.ploty.plot(t, y)
+        y = self.rect(self.t + float(rShift))
+        self.ploty.plot(self.t, y)
+        self.canvas.draw()
+        self.toolbar.update()
+
+    def correlateShift(self):
+        self.ploty.clear()
+        shift_val = int(self.input.get())
+        print(f"Shift value: {shift_val}")
+        correlated_data = m.correlateUserInput(shift_val)
+        print("correlation retrived")
+        self.ploty.plot(m.t, correlated_data)
         self.canvas.draw()
         self.toolbar.update()
 
