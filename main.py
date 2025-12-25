@@ -23,6 +23,7 @@ y, sr = librosa.load(file_path, sr = None, mono = True)
 t = np.linspace(0, len(y) / sr , len(y))
 
 
+
 def correlateUserInput(user_shift):
     if isinstance(user_shift, (int, float)):
         customShift = audio_fn(t - user_shift)
@@ -31,6 +32,13 @@ def correlateUserInput(user_shift):
     else:
         print("Error: invalid input, could not correlate")
 
+def getFixedDelays():
+    two_second_delay = signal.correlate(audio_fn(t) ,audio_fn(t - 2), mode="same", method="fft")
+    thirty_second_delay = signal.correlate(audio_fn(t) ,audio_fn(t - 30), mode="same", method="fft")
+
+    return two_second_delay, thirty_second_delay
+
+two_sec_correlation , thirty_sec_correlation = getFixedDelays()
 
 
 if __name__ == "__main__":
@@ -47,8 +55,6 @@ if __name__ == "__main__":
 
     # Subplot of 3 horiztonal plots shows a comparision between the orignal representation of the audio file
     # As well as 2 other deplayed reprsentations, i.e, 2 sec. delay and 30 sec. delay, respectively.
-
-
 
     plt.figure(2, figsize=(12, 8))
 
@@ -91,23 +97,20 @@ if __name__ == "__main__":
 
     plt.figure(3, figsize=(16, 10))
 
-
     plt.subplot(1,2,1)
-    firstCorrelation = signal.correlate(originalAudio, twoSecDelay, mode="same", method="fft")
     plt.xlim(0, len(y) / sr)
     plt.ylabel("Correlation")
     plt.xlabel("Time (s)")
     plt.title("Correlation between the Original Audio Signal and the 2 sec. Delay")
-    plt.plot(t, firstCorrelation)
+    plt.plot(t, two_sec_correlation)
 
     # Correlation between the Orignal Signal and the Delayed Signal by 30 sec.
 
     plt.subplot(1,2,2)
-    secondCorreLation = signal.correlate(originalAudio, thirtySecondDelay, mode="same", method="fft")
     plt.xlim(0, len(y) / sr)
     plt.ylabel("Correlation")
     plt.xlabel("Time (s)")
     plt.title("Correlation between the Original Audio Signal and the 30 sec. Delay")
-    plt.plot(t, secondCorreLation)
+    plt.plot(t, thirty_sec_correlation)
 
     plt.show()
