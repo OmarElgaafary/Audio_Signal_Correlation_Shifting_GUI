@@ -45,7 +45,7 @@ if __name__ == "__main__":
     # Original Audio Time Signal Representation 
 
     plt.figure(1, figsize=(12, 8))
-    plt.xlabel("Time (t)")
+    plt.xlabel("Time (s)")
     plt.ylabel("Amplitude")
     plt.title("Time representation of cat audio .wav file")
     plt.plot(t, y)
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     originalAudio = audio_fn(t - 0)
 
     plt.subplot(1,3,1)
-    plt.xlabel("Time (t)")
+    plt.xlabel("Time (s)")
     plt.ylabel("Amplitude")
     plt.title("Original Audio File (t + 0)")
     plt.plot(t, originalAudio)
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     twoSecDelay = audio_fn(t - 2)
 
     plt.subplot(1,3,2)
-    plt.xlabel("Time (t)")
+    plt.xlabel("Time (s)")
     plt.xlim(0, len(y) / sr)
     plt.ylabel("Amplitude")
     plt.title("Audio File Delayed by 2 sec. (t - 2)")
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     thirtySecondDelay = audio_fn(t - 30)
 
     plt.subplot(1,3,3)
-    plt.xlabel("Time (t)")
+    plt.xlabel("Time (s)")
     plt.xlim(0, len(y) / sr)
     plt.ylabel("Amplitude")
     plt.title("Audio File Delayed by 30 sec. (t - 30)")
