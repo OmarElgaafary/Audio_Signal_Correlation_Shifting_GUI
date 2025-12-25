@@ -18,7 +18,7 @@ def audio_fn(t):
     
 # Audio Reading
 
-file_path = "cat_audio.wav"
+file_path = "./audios/cat_audio.wav"
 y, sr = librosa.load(file_path, sr = None, mono = True)
 t = np.linspace(0, len(y) / sr , len(y))
 
