@@ -1,3 +1,5 @@
+Preview (user-defined delay = 20):
+
 <img width="1196" height="821" alt="Correlation Visualization" src="https://github.com/user-attachments/assets/874654b6-fcbe-4a00-8770-6eca63a4ef21" />
 
 Audio Credit:
