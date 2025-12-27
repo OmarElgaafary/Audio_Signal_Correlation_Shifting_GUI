@@ -68,7 +68,6 @@ class SignalCorrelationApp:
         self.btn.pack(side=tk.TOP, pady=(5, 15))
 
     def setup_plot_style(self, ax, title):
-        """Helper to apply consistent styling to plots"""
         ax.set_title(title, fontsize=11, fontweight='bold')
         ax.set_xlabel("Time (s)")
         ax.set_ylabel("Correlation")
