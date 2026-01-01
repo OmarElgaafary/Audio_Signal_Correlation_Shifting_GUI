@@ -36,7 +36,7 @@ Where:
 
 **(User-defined delay = 20s)**
 
-![Correlation Visualization](https://github.com/user-attachments/assets/874654b6-fcbe-4a00-8770-6eca63a4ef21)
+<img width="1196" height="827" alt="preview" src="https://github.com/user-attachments/assets/52fe544c-956d-4bdc-bd40-0d34b746375c" />
 
 ## 📦 Installation & Usage
 
