@@ -55,10 +55,3 @@ Where:
     ```bash
     python gui.py
     ```
-
-## 🎵 Audio Credits
-
-This tool uses sample audio for demonstration purposes. Credit to the original creators:
-
-* **Guitar Melody:** [YouTube Link](https://www.youtube.com/watch?v=63hdfvqiIV8&list=RD63hdfvqiIV8&start_radio=1)
-* **Cat Audio:** [YouTube Link](https://www.youtube.com/watch?v=-dTa8gchZfc)
