@@ -1,9 +1,7 @@
 import tkinter as tk
-from tkinter import messagebox
-import matplotlib.pyplot as plt
+from tkinter import filedialog
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
-import numpy as np
 import main as m  
 
 class SignalCorrelationApp:
@@ -27,8 +25,8 @@ class SignalCorrelationApp:
         self.second_plot = self.fig.add_subplot(132)
         self.custom_plot = self.fig.add_subplot(133)
 
-        self.first_plot.plot(m.t, m.two_sec_correlation, color='#1f77b4') # Blue
-        self.second_plot.plot(m.t, m.thirty_sec_correlation, color='#ff7f0e') # Orange
+        self.first_plot.plot(m.t, m.two_sec_correlation, color='#1f77b4') 
+        self.second_plot.plot(m.t, m.thirty_sec_correlation, color='#ff7f0e') 
 
         self.setup_plot_style(self.first_plot, "Delay: 2 seconds")
         self.setup_plot_style(self.second_plot, "Delay: 30 seconds")
@@ -40,6 +38,17 @@ class SignalCorrelationApp:
 
         self.toolbar = NavigationToolbar2Tk(self.canvas, self.plot_frame)
         self.toolbar.update()
+
+        self.import_btn = tk.Button(
+            self.control_frame, 
+            text="Import WAV File",
+            font=("Arial", 12, "bold"),
+            bg="#28a745",
+            fg="white",
+            width=20,
+            command=self.importAudio
+        )
+        self.import_btn.pack(side=tk.TOP, pady=(10, 5))
         
 
         self.label = tk.Label(
@@ -66,6 +75,34 @@ class SignalCorrelationApp:
             command=self.correlateShift
         )
         self.btn.pack(side=tk.TOP, pady=(5, 15))
+
+
+    def importAudio(self):
+        file_path = filedialog.askopenfilename(
+            title="Select WAV file",
+            filetypes=(("WAV files", "*.wav"), ("All files", "*.*"))
+        )
+        
+        if file_path:
+            m.changeAudioFileGUI(file_path) 
+            
+            # Refresh the plots with the new data from main.py
+            self.update_all_plots()
+            self.canvas.draw()
+            print(f"Loaded new file: {file_path}")
+
+    def update_all_plots(self):
+        self.first_plot.clear()
+        self.second_plot.clear()
+
+        first_signal, second_signal = m.getFixedDelays()
+        
+        self.first_plot.plot(m.t, first_signal, color='#1f77b4')
+        self.second_plot.plot(m.t, second_signal, color='#ff7f0e')
+        
+        self.setup_plot_style(self.first_plot, "Delay: 2 seconds")
+        self.setup_plot_style(self.second_plot, "Delay: 30 seconds")
+        self.setup_plot_style(self.custom_plot, "User Defined Delay")
 
     def setup_plot_style(self, ax, title):
         ax.set_title(title, fontsize=11, fontweight='bold')

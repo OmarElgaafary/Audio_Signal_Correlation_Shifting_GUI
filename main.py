@@ -3,11 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import signal
 
-def fourier_transform (fx,fs):
-    FX = np.fft.fft(fx)
-    f = np.fft.fftfreq(len(FX), (1/fs)) 
-    return FX, f
-
 def audio_fn(t): 
     indices = (t * sr).astype(int)
     return np.where(
@@ -22,6 +17,11 @@ file_path = "./audios/cat_audio.wav"
 y, sr = librosa.load(file_path, sr = None, mono = True)
 t = np.linspace(0, len(y) / sr , len(y))
 
+def changeAudioFileGUI(gui_path):
+    global file_path, y, sr, t
+    file_path = gui_path
+    y, sr = librosa.load(file_path, sr = None, mono = True)
+    t = np.linspace(0, len(y) / sr , len(y))
 
 
 def correlateUserInput(user_shift):
