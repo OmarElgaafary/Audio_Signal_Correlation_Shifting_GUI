@@ -1,45 +1,64 @@
-# Audio Signal Shift Correlation Visualization Tool   
-A Python powered GUI application for visualizing audio signal cross correlation with user defined time shifts. 
+# Audio Signal Shift Correlation Visualization Tool
 
-## GUI
-* The GUI is mainly powered by **Tkinter**, which is part of Python's built-in library for creating graphical user interfaces. All the buttons including the **"Compute Correlation"** & **"Import"** buttons are all relient on Tkinter for interactivity. 
+A high-performance Python GUI application designed to visualize audio signal cross-correlation. This tool allows users to import audio files, apply user-defined time shifts, and analyze the correlation between the original and shifted signals in real-time.
 
-* Another library that enables the GUI is **matplotlib**'s backend libraries used for displaying the plots on the GUI, responsible for the visualization of the graphs and navigation tools.
+## 🚀 Features
 
-## Correlation Logic 
+* **Interactive GUI:** Built with **Tkinter** for a responsive user experience.
+* **Custom Audio Support:** Import your own `.wav` files using **Librosa**.
+* **High-Performance Logic:** Utilizes **Scipy's** FFT-based convolution for rapid correlation calculation, significantly outperforming standard NumPy methods.
+* **Dynamic Visualization:** Real-time plotting of waveforms and correlation graphs using **Matplotlib**.
+* **Flexible Controls:** * One-click presets for **2s** and **30s** delays.
+    * Input field for custom user-defined time shifts.
 
-* All the correlation logic used in the **main.py** is relient on the **scipy** library and mainly the **signal** module used cross-correlation for signals. The scipy library is preferred over the numpy library due to it's efficiency and speed in calculating cross-correlation between two numpy arrays using **Fast Fourier Transform** mode, which is far superior to numpy's correlating methods, due to the fact that scipy's correlating method preforms correlation in the frequecny domain first before converting the signal back to time domain which profoundly decrease time to compute correalation.
-<br>
-<br>
+## 🛠️ Tech Stack
 
-  *Scipy defines the correlation z of two d-dimensional arrays x and y is defined as:*
-  
-  $$z[k] = \sum_{l=0}^{N-1} x_l y^*_{l-k}$$
+* **GUI:** `tkinter` (Standard Python Interface)
+* **Computation:** `scipy.signal` (FFT-based Cross-Correlation), `numpy` (Array manipulation)
+* **Visualization:** `matplotlib.pyplot` (Graphing backend)
+* **Audio Processing:** `librosa` (Audio file loading and sampling)
 
+## 🧮 Correlation Logic
 
-<br>
-<br>
+The application prioritizes speed and memory efficiency. Instead of standard spatial domain convolution, the **main.py** logic leverages `scipy.signal.correlate` using the **Fast Fourier Transform (FFT)** method. This converts the signal to the frequency domain to compute correlation, which is computationally superior for large audio arrays compared to standard time-domain iterative methods.
 
-* Array storage of the x & y axes sample valus is done using the **Numpy** Library which are preferred over the standard Python lists due to their speed and memory efficienct.
+**Mathematical Definition:**
+Scipy defines the discrete cross-correlation $z$ of two arrays $x$ and $y$ as:
 
-* Ploting of graphs is achieved using the **pyplot** module from the **matploblib** library for plotting and visualizing graphs in Python.      
+$$z[k] = \sum_{l=0}^{N-1} x_l y^*_{l-k}$$
 
-* The **Librosa** library is used in importing '.wav' audio files.
+Where:
+* $z[k]$ is the correlation result at lag $k$.
+* $x_l$ is the input array.
+* $y^*$ denotes the complex conjugate of the shifted array.
 
+## 📸 Preview
 
-## Featues 
+**(User-defined delay = 20s)**
 
-* Hasty computation due to highly optimized code and diligenty choosen libraries.
-* Importing custom audio files.
-* Two static shifted correlations of orginal audio. (2s delay & 30s delay)
-* User-defined shift values.
+![Correlation Visualization](https://github.com/user-attachments/assets/874654b6-fcbe-4a00-8770-6eca63a4ef21)
 
-## Preview (user-defined delay = 20s):
+## 📦 Installation & Usage
 
-<img width="1196" height="821" alt="Correlation Visualization" src="https://github.com/user-attachments/assets/874654b6-fcbe-4a00-8770-6eca63a4ef21" />
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    cd your-repo-name
+    ```
 
-# Audio Credit:
+2.  **Install dependencies:**
+    ```bash
+    pip install numpy scipy matplotlib librosa
+    ```
 
-Guitar Melody : https://www.youtube.com/watch?v=63hdfvqiIV8&list=RD63hdfvqiIV8&start_radio=1 
+3.  **Run the application:**
+    ```bash
+    python gui.py
+    ```
 
-Cat Audio : https://www.youtube.com/watch?v=-dTa8gchZfc
+## 🎵 Audio Credits
+
+This tool uses sample audio for demonstration purposes. Credit to the original creators:
+
+* **Guitar Melody:** [YouTube Link](https://www.youtube.com/watch?v=63hdfvqiIV8&list=RD63hdfvqiIV8&start_radio=1)
+* **Cat Audio:** [YouTube Link](https://www.youtube.com/watch?v=-dTa8gchZfc)
