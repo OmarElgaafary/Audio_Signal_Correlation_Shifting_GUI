@@ -2,7 +2,7 @@
 
 A high-performance Python GUI application designed to visualize audio signal cross-correlation. This tool allows users to import audio files, apply user-defined time shifts, and analyze the correlation between the original and shifted signals in real-time.
 
-## 🚀 Features
+## Features
 
 * **Interactive GUI:** Built with **Tkinter** for a responsive user experience.
 * **Custom Audio Support:** Import your own `.wav` files using **Librosa**.
@@ -11,14 +11,14 @@ A high-performance Python GUI application designed to visualize audio signal cro
 * **Flexible Controls:** * One-click presets for **2s** and **30s** delays.
     * Input field for custom user-defined time shifts.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **GUI:** `tkinter` (Standard Python Interface)
 * **Computation:** `scipy.signal` (FFT-based Cross-Correlation), `numpy` (Array manipulation)
 * **Visualization:** `matplotlib.pyplot` (Graphing backend)
 * **Audio Processing:** `librosa` (Audio file loading and sampling)
 
-## 🧮 Correlation Logic
+## Correlation Logic
 
 The application prioritizes speed and memory efficiency. Instead of standard spatial domain convolution, the **main.py** logic leverages `scipy.signal.correlate` using the **Fast Fourier Transform (FFT)** method. This converts the signal to the frequency domain to compute correlation, which is computationally superior for large audio arrays compared to standard time-domain iterative methods.
 
@@ -38,7 +38,7 @@ Where:
 ![Correlation_Visualization_Preview-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2cb3759e-994c-489b-b7f3-a9ec12530267)
 
 
-## 📦 Installation & Usage
+## Installation & Usage
 
 1.  **Clone the repository:**
     ```bash
