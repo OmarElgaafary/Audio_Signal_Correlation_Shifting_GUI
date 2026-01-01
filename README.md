@@ -1,20 +1,38 @@
-## Audio Signal Shift Correlation Visualization Tool   
+# Audio Signal Shift Correlation Visualization Tool   
 A Python powered GUI application for visualizing audio signal cross correlation with user defined time shifts. 
 
-# GUI
-* The GUI is mainly powered by **Tkinter**, which is part of Python's built-in library for creating graphical user interfaces. All the buttons including the "Compute Correlation" & "Import" buttons are all relient on Tkinter for interactivity. 
+## GUI
+* The GUI is mainly powered by **Tkinter**, which is part of Python's built-in library for creating graphical user interfaces. All the buttons including the **"Compute Correlation"** & **"Import"** buttons are all relient on Tkinter for interactivity. 
 
 * Another library that enables the GUI is **matplotlib**'s backend libraries used for displaying the plots on the GUI, responsible for the visualization of the graphs and navigation tools.
 
-# Correlation Logic 
+## Correlation Logic 
 
 * All the correlation logic used in the **main.py** is relient on the **scipy** library and mainly the **signal** module used cross-correlation for signals. The scipy library is preferred over the numpy library due to it's efficiency and speed in calculating cross-correlation between two numpy arrays using **Fast Fourier Transform** mode, which is far superior to numpy's correlating methods, due to the fact that scipy's correlating method preforms correlation in the frequecny domain first before converting the signal back to time domain which profoundly decrease time to compute correalation.
+<br>
+<br>
+
+  *Scipy defines the correlation z of two d-dimensional arrays x and y is defined as:*
+  
+  $$z[k] = \sum_{l=0}^{N-1} x_l y^*_{l-k}$$
+
+
+<br>
+<br>
 
 * Array storage of the x & y axes sample valus is done using the **Numpy** Library which are preferred over the standard Python lists due to their speed and memory efficienct.
 
 * Ploting of graphs is achieved using the **pyplot** module from the **matploblib** library for plotting and visualizing graphs in Python.      
 
 * The **Librosa** library is used in importing '.wav' audio files.
+
+
+## Featues 
+
+* Hasty computation due to highly optimized code and diligenty choosen libraries.
+* Importing custom audio files.
+* Two static shifted correlations of orginal audio. (2s delay & 30s delay)
+* User-defined shift values.
 
 ## Preview (user-defined delay = 20s):
 
@@ -23,4 +41,5 @@ A Python powered GUI application for visualizing audio signal cross correlation 
 # Audio Credit:
 
 Guitar Melody : https://www.youtube.com/watch?v=63hdfvqiIV8&list=RD63hdfvqiIV8&start_radio=1 
+
 Cat Audio : https://www.youtube.com/watch?v=-dTa8gchZfc
