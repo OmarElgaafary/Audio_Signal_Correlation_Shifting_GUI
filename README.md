@@ -17,5 +17,4 @@ A Python powered GUI application for visualizing audio signal cross correlation 
 # Audio Credit:
 
 Guitar Melody : https://www.youtube.com/watch?v=63hdfvqiIV8&list=RD63hdfvqiIV8&start_radio=1
-
 Cat Audio : https://www.youtube.com/watch?v=-dTa8gchZfc
