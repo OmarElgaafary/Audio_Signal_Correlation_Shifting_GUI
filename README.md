@@ -34,9 +34,9 @@ Where:
 
 ## 📸 Preview
 
-**(User-defined delay = 20s)**
 
-<img width="1196" height="827" alt="preview" src="https://github.com/user-attachments/assets/52fe544c-956d-4bdc-bd40-0d34b746375c" />
+![Correlation_Visualization_Preview-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2cb3759e-994c-489b-b7f3-a9ec12530267)
+
 
 ## 📦 Installation & Usage
 
