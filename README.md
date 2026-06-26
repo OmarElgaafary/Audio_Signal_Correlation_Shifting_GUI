@@ -53,5 +53,6 @@ Where:
 
 3.  **Run the application:**
     ```bash
+    cd gui
     python gui.py
     ```
